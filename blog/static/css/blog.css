@@ -28,3 +28,8 @@ h4 {
 .card {
     box-shadow: 0 16px 48px #E3E7EB;
 }
+
+.post-form textarea,
+.post-form input {
+    width: 100%;
+}

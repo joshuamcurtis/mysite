@@ -1,17 +1,19 @@
 from django.shortcuts import render
-from django.views.generic import ListView, DetailView
+from django.views.generic import ListView, DetailView, CreateView
 from .models import Post
+from .forms import PostForm
+from django.urls import reverse_lazy
 
-'''
+
 class PostCreateView(CreateView):
     model = Post
-    fields = ['title', 'author']
-    success_url = ''
-'''
+    success_url = reverse_lazy('home')
+    form_class = PostForm
+
 class PostListView(ListView):
     queryset = Post.objects.filter(status=1).order_by('-published_date')
-    template_name = 'index.html'
+    template_name = 'blog\index.html'
 
 class PostDetailView(DetailView):
     model = Post
-    template_name = 'post_detail.html'
+    template_name = 'blog\post_detail.html'
