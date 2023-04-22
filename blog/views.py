@@ -13,6 +13,7 @@ class PostCreateView(CreateView):
 class PostListView(ListView):
     queryset = Post.objects.filter(status=1).order_by('-published_date')
     template_name = 'blog\index.html'
+    paginate_by = 5
 
 class PostDetailView(DetailView):
     model = Post
